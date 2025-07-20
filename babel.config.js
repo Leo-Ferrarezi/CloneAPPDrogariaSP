@@ -1,5 +1,9 @@
-module.exports = {
-    presets: ['babel-preset-expo'], // Preset do Expo para React Native
-    plugins: ['react-native-reanimated/plugin'], // Plugin do react-native-reanimated
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      'react-native-reanimated/plugin', // Mantenha esta linha
+    ],
   };
-  
+};

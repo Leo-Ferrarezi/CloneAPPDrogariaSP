@@ -1,9 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, Alert,ScrollView } from 'react-native';
+import { TouchableOpacity,StyleSheet, Text, View, Image, Pressable, Alert,ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { SearchBar } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { styles } from './style';
+
+
+
+
 // array de objetos 1 carrosel
 const imagensCarrossel = [
   { id: 1, uri: require('./assets/Genericos.logo.png') },
@@ -34,6 +38,8 @@ const carroselTres = [
   require('./assets/TerceiroCarrosel3.jpeg'),
   require('./assets/TerceiroCarrosel4.jpeg'),
   ] ; 
+
+  
 
 export default function App() {
   return (
@@ -76,21 +82,22 @@ export default function App() {
       </View>
 
       {/* Carrossel 1 */}
-      <View style={styles.wrapperCarrossel}>
+      <View style={styles.wrapperCarrosselOne}>
         <Carousel 
           loop
           width={500}
-          height={160}
+          height={120}
           autoPlay={true}
           data={imagensCarrossel}
           scrollAnimationDuration={1000}
           style={styles.estiloCarrossel}
           renderItem={({ item }) => (
-            <View style={styles.itemCarrossel}>
+            <View style={styles.individualPrimeiroCarrosel}>
               <Image
                 source={item.uri}
-                style={styles.imagemCarrossel}
-                resizeMode='contain'
+                style={styles. imagemApenasPrimeiroCarrosel}
+                resizeMode='cover'
+                
               />
             </View>
           )}
@@ -104,7 +111,7 @@ export default function App() {
       {/* Carrossel 2 */}
       {/* tenho q passar propriedades pro carrosel q ja existe */}
 
-      <View style={styles.wrapperCarrossel}>
+      <View style={styles.wrapperCarrosselOne}>
         <Carousel 
           width={500}
           height={160}
@@ -116,7 +123,7 @@ export default function App() {
             <View style={styles.itemCarrossel}>
               <Image
                 source={item.uri}
-                style={styles.imagemCarrossel}
+                style={styles.imagemCarrosselDois}
                 resizeMode='contain'
               />
             </View>
@@ -146,7 +153,7 @@ export default function App() {
   <View style={styles.wrapperCarrossel}>
   <Carousel
     loop={true}
-    width={400}
+    width={420}
     height={200}
     autoPlay={true}
     data={carroselTres}
@@ -169,12 +176,9 @@ export default function App() {
   {/* IMAGEM FORA DO CARROSSEL */}
   <Image
     source={require('./assets/quartaViewFreteEntrega.jpg')}
-    style={{ width: 400, height: 220, resizeMode: 'contain', marginTop: -100 }}
+    style={{ width: 400, height: 220, resizeMode: 'contain', marginTop: -120 }}
   />
 </View>
-
-  
-
 
    
 
@@ -193,123 +197,3 @@ export default function App() {
 
 
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  cabecalho: {
-    backgroundColor: '#282828',
-    padding: 10,
-  },
-  iconesCabecalho: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  containerIcones: {
-    flexDirection: 'row',
-    gap: 15,
-  },
-  icone: {
-    marginLeft: 10,
-  },
-  logo: {
-    width: 70,
-    height: 50,
-    alignSelf: 'auto',
-    marginTop: 10,
-  },
-  textoCabecalho: {
-    color: 'white',
-    fontSize: 14,
-  },
-  containerBusca: {
-    borderRadius: 30,
-    overflow: 'hidden',
-    marginTop: 10,
-  },
-  barraBuscaContainer: {
-    backgroundColor: 'white',
-    borderTopWidth: 0,
-    borderBottomWidth: 0,
-    padding: 0,
-  },
-  inputBuscaContainer: {
-    backgroundColor: 'white',
-    height: 40,
-  },
-  wrapperCarrossel: {
-    marginTop: 2,
-    marginBottom: 10,
-  },
-  estiloCarrossel: {
-    marginTop: 12,
-  },
-  itemCarrossel: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    height: '100%',
-    padding: 5,
-    borderColor: 'black',
-  },
-  imagemCarrossel: {
-    width: '60%',
-    height: '60%',
-    marginTop: 1,
-  },
-
-  textoTerceiroCarrosel: {
-
-    
-    fontWeight: '500',
-    fontSize: 22, 
-    fontFamily: `Georgia`,
-    marginRight: 70,
-    
-    
-    },
-
-    imageCombine: {  
-
-      height: 50 ,
-      
-      marginRight: 0,
-      },
-
-      viewCombine : {
-
-      flexDirection: `row`,
-      alignItems: `center`,
-      justifyContent: `center`,
-      marginTop: 10,
-      
-      
-       } ,
-
-       estiloDoTerceiroCarrosel:{
-        
-         marginTop: 0,
-         
-       } ,
-
-       ReferenteViewDofrete:{
-        alignItems: `center`,
-      justifyContent: `center`,
-      
-
-        
-       },
-
-       imagemFreteEntrega:{
-        
-        width: '100%',
-        height: 200,
-        alignSelf: 'center',
-        
-
-       } ,
-
-});

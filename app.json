@@ -8,9 +8,9 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-  "image": "./assets/certofoto.png",
+   "image": "./assets/UsaresseSplash.jpeg",
   "resizeMode": "contain",
-  "backgroundColor": "#000000"
+  "backgroundColor": "white"
 }
 ,
     "ios": {
