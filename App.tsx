@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, Alert,ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { SearchBar } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // array de objetos 1 carrosel
 const imagensCarrossel = [
   { id: 1, uri: require('./assets/Genericos.logo.png') },
@@ -37,6 +37,8 @@ const carroselTres = [
 
 export default function App() {
   return (
+    <ScrollView>
+
     <View style={styles.container}>
       {/* Cabeçalho */}
       <View style={styles.cabecalho} testID='cabecalho'>
@@ -139,13 +141,52 @@ export default function App() {
 
       </Text>
 
+</View>
 
+  <View style={styles.wrapperCarrossel}>
+  <Carousel
+    loop={true}
+    width={400}
+    height={200}
+    autoPlay={true}
+    data={carroselTres}
+    scrollAnimationDuration={1000}
+    style={styles.estiloDoTerceiroCarrosel}
+    renderItem={({ item }) => (
+      <View style={styles.itemCarrossel}>
+        <Image
+          source={item}
+          style={styles.imagemCarrossel}
+          resizeMode="contain"
+        />
+      </View>
       
-    
-        
-     </View>
+    )}
+  />
+  
+  
+
+  {/* IMAGEM FORA DO CARROSSEL */}
+  <Image
+    source={require('./assets/quartaViewFreteEntrega.jpg')}
+    style={{ width: 400, height: 220, resizeMode: 'contain', marginTop: -100 }}
+  />
+</View>
+
+  
+
+
+   
 
     </View>
+    
+
+ 
+
+
+
+
+     </ScrollView>
     
   );
 }
@@ -202,7 +243,7 @@ const styles = StyleSheet.create({
   },
   wrapperCarrossel: {
     marginTop: 2,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   estiloCarrossel: {
     marginTop: 12,
@@ -228,6 +269,7 @@ const styles = StyleSheet.create({
     fontFamily: `Georgia`,
     marginRight: 70,
     
+    
     },
 
     imageCombine: {  
@@ -244,8 +286,30 @@ const styles = StyleSheet.create({
       justifyContent: `center`,
       marginTop: 10,
       
+      
+       } ,
 
+       estiloDoTerceiroCarrosel:{
+        
+         marginTop: 0,
+         
+       } ,
 
-      }
+       ReferenteViewDofrete:{
+        alignItems: `center`,
+      justifyContent: `center`,
+      
+
+        
+       },
+
+       imagemFreteEntrega:{
+        
+        width: '100%',
+        height: 200,
+        alignSelf: 'center',
+        
+
+       } ,
 
 });
