@@ -21,6 +21,20 @@ const carroselDois = [
   { id: 5, uri: require('./assets/foto5Carrosel.jpg') },
 ];
 
+/// PRIMEIROS ARRAYS FORAM DE OBJETOS, PQ GUARDAM OUTRAS INFORMACOES JUNTO DA IMAGEM
+// O TERCEIRO TO FAZENDO SO C IMG
+
+// USAR REQUIRE pra imagens dentro do projeto , e URI quando for pegar de algum lugar online, tipo API e tals 
+// ESSE TRECHO FAREI C REQUIRE APENAS, SEM OBJETO, APENAS CAMINHO DA IMG. 
+
+
+const carroselTres = [
+  require('./assets/TerceiroCarrosel1.jpeg'),
+  require('./assets/TerceiroCarrosel2.jpeg'),
+  require('./assets/TerceiroCarrosel3.jpeg'),
+  require('./assets/TerceiroCarrosel4.jpeg'),
+  ] ; 
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -113,9 +127,22 @@ export default function App() {
       <View style={{ backgroundColor: '#c0c0c0', width: '100%', height: 17 }} />
      </View>
 
-     <View>
+     <View style={styles.viewCombine}>
+      <Image 
+         source={require('./assets/foto.combine.png')}
+          style={styles.imageCombine}
+          resizeMode="contain"
+      />
 
-    <Text>Oiii </Text>
+      <Text style={styles.textoTerceiroCarrosel} >
+            Combine & Economize
+
+      </Text>
+
+
+      
+    
+        
      </View>
 
     </View>
@@ -192,4 +219,33 @@ const styles = StyleSheet.create({
     height: '60%',
     marginTop: 1,
   },
+
+  textoTerceiroCarrosel: {
+
+    
+    fontWeight: '500',
+    fontSize: 22, 
+    fontFamily: `Georgia`,
+    marginRight: 70,
+    
+    },
+
+    imageCombine: {  
+
+      height: 50 ,
+      
+      marginRight: 0,
+      },
+
+      viewCombine : {
+
+      flexDirection: `row`,
+      alignItems: `center`,
+      justifyContent: `center`,
+      marginTop: 10,
+      
+
+
+      }
+
 });
